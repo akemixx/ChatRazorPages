@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Chat";
+}
+
+<div class="text-center">
+    @{
+        foreach (var mes in Model.Messages)
+        {
+        <div style="border:1px solid #808080">
+            <div style="font-size:smaller"><b>@mes.Sender</b> at @mes.SendingDateTime </div>
+            <div style="font-size:larger">@mes.Text </div>
+        </div>
+        }
+    }
+    <hr/>
+    <form method="post">
+        <label asp-for="Text"></label>
+        <input asp-for="Text"/>
+        <input type="submit" value="Send"/>
+        <span asp-validation-for="Text"></span>
+    </form>
+</div>
+<partial name="_ValidationScriptsPartial" />
