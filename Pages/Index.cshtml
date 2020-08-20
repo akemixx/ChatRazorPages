@@ -4,22 +4,28 @@
     ViewData["Title"] = "Chat";
 }
 
-<div class="text-center">
-    @{
-        foreach (var mes in Model.Messages)
-        {
-        <div style="border:1px solid #808080">
-            <div style="font-size:smaller"><b>@mes.Sender</b> at @mes.SendingDateTime </div>
-            <div style="font-size:larger">@mes.Text </div>
-        </div>
+    <div>
+        @{
+            foreach (var mes in Model.Messages)
+            {
+                <div style="border:1px solid #808080">
+                    <div style="font-size:smaller"><b>@mes.Sender</b> at @mes.SendingDateTime </div>
+                    <div style="font-size:larger">@mes.Text </div>
+                </div>
+            }
         }
-    }
-    <hr/>
-    <form method="post">
-        <label asp-for="Text"></label>
-        <input asp-for="Text"/>
-        <input type="submit" value="Send"/>
-        <span asp-validation-for="Text"></span>
-    </form>
-</div>
+        <div id="bottom"></div>
+        <hr />
+        <div id="form">
+            <label asp-for="Text"></label>
+            <input asp-for="Text" value="" >
+            <input type="button" id="sendButton" value="Send" />
+            <span asp-validation-for="Text"></span>
+        </div>
+    </div>
 <partial name="_ValidationScriptsPartial" />
+
+@section Scripts{
+    <script src="~/lib/aspnet/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/index.js"></script>
+}

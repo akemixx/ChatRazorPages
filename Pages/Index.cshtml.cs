@@ -36,21 +36,21 @@ namespace ChatRazorPages.Pages
             return Page();
         }
 
-        public IActionResult OnPost()
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Message.Add(new Message
-                {
-                    Text = Text,
-                    SendingDateTime = DateTime.Now,
-                    Sender = User.Identity.Name
-                });
-                _db.SaveChanges();
-                return RedirectToAction(nameof(OnGet));
-            }
-            Messages = _db.Message.ToList();
-            return Page();
-        }
+        //public IActionResult OnPost()
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _db.Message.Add(new Message
+        //        {
+        //            Text = Text,
+        //            SendingDateTime = DateTime.Now,
+        //            Sender = User.Identity.Name
+        //        });
+        //        _db.SaveChanges();
+        //        return RedirectToAction(nameof(OnGet));
+        //    }
+        //    Messages = _db.Message.ToList();
+        //    return Page();
+        //}
     }
 }
